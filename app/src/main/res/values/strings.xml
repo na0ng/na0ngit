@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MyIntent</string>
+
+    <!-- open api활용 : 미세먼지 -->
+    <string name="pm_unit">㎍/㎥</string>
+
+</resources>
