@@ -11,15 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LifeCycleActivity"></activity>
-        <activity android:name=".SubActivity" />
-        <activity android:name=".RecycleStaggereViewActivity" />
-        <activity android:name=".RecycleGridViewActivity" />
-        <activity android:name=".DustViewActivity" />
-        <activity android:name=".RecycleViewActivity" />
-        <activity android:name=".ListViewActivity" />
-        <activity android:name=".SecondActivity" />
-        <activity android:name=".MainActivity">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAn-1krtVvFCHtf4zJXs8afNI_2A6HeDPM" />
+
+        <activity android:name=".activity.DustMapActivity" />
+        <activity android:name=".activity.ImageClickActivity" />
+        <activity android:name=".activity.LifeCycleActivity" />
+        <activity android:name=".activity.SubActivity" />
+        <activity android:name=".activity.RecycleStaggereViewActivity" />
+        <activity android:name=".activity.RecycleGridViewActivity" />
+        <activity android:name=".activity.DustViewActivity" />
+        <activity android:name=".activity.RecycleViewActivity" />
+        <activity android:name=".activity.ListViewActivity" />
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

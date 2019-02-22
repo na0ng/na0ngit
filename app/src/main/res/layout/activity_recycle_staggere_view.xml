@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecycleStaggereViewActivity">
+    tools:context=".activity.RecycleStaggereViewActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycleGridView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        class="android.support.v4.view.ViewPager"/>
 
 </android.support.constraint.ConstraintLayout>
