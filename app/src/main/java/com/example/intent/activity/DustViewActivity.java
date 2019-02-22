@@ -23,6 +23,7 @@ import java.util.ArrayList;
 
 public class DustViewActivity extends AppCompatActivity {
 
+
     //변수
     ArrayList<DustItem> dataList;
     DustAdapter dustAdapter;
