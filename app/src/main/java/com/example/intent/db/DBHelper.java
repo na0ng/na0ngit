@@ -50,7 +50,7 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void onInsert(String placeNm, String dmX, String dmY) {
+    public void onInsert(String placeNm, Double dmX, Double dmY) {
 
         // insert
         sqLiteDatabase.execSQL("insert into tb_place_info (placeNm, dmX, dmY) values ('" + placeNm + "', '" + dmX  + "', '" + dmY+ "');");
@@ -69,8 +69,8 @@ public class DBHelper extends SQLiteOpenHelper {
         if(cursor.moveToFirst()) {
 
             dustItem.setStationName(cursor.getString(0));
-            dustItem.setDmX(cursor.getString(1));
-            dustItem.setDmY(cursor.getString(2));
+            dustItem.setDmX(cursor.getDouble(1));
+            dustItem.setDmY(cursor.getDouble(2));
 
         }
 

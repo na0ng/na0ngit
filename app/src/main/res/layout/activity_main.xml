@@ -1,123 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:stretchColumns="0,1,2">
+    android:orientation="horizontal">
 
-
-    <TableRow
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp">
+        android:layout_height="match_parent"
+        android:stretchColumns="0,1,2">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
+        <TableRow
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="나옹이의 Android 예제"
-            android:textColor="#4374D9"
-            android:paddingLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:textSize="20sp"/>
-    </TableRow>
+            android:paddingTop="10dp">
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="30dp">
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="나옹이의 Android 예제"
+                android:textColor="#535c68"
+                android:paddingLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"/>
+        </TableRow>
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
+        <TableRow
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Intent"
-            android:textColor="#A6A6A6"
-            android:textSize="16sp"
-            android:paddingLeft="10dp"/>
+            android:paddingTop="30dp">
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onButtonClicked"
-            android:text="next"/>
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Intent"
+                android:textColor="#A6A6A6"
+                android:textSize="13sp"
+                android:paddingLeft="10dp"/>
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onButton2Clicked"
-            android:text="mail"/>
-    </TableRow>
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onButtonClicked"
+                android:text="next"/>
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onButton2Clicked"
+                android:text="mail"/>
+        </TableRow>
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Open API 활용예제"
-            android:textColor="#A6A6A6"
-            android:textSize="16sp"
-            android:paddingLeft="10dp"/>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
 
-        <Button
-            android:id="@+id/button6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="DUST" />
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Open API 활용예제"
+                android:textColor="#A6A6A6"
+                android:textSize="13sp"
+                android:paddingLeft="10dp"/>
 
-    </TableRow>
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DUST" />
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        </TableRow>
 
-        <TextView
-            android:id="@+id/layoutManager"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:text="Layout Manager"
-            android:textColor="#A6A6A6"
-            android:textSize="16sp"
-            android:paddingLeft="10dp"/>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/gridButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onGButtonClicked"
-            android:text="Grid" />
+            <TextView
+                android:id="@+id/layoutManager"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="Layout Manager"
+                android:textColor="#A6A6A6"
+                android:textSize="13sp"
+                android:paddingLeft="10dp"/>
 
-        <Button
-            android:id="@+id/staggeredButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onSButtonClicked"
-            android:text="staggere" />
-    </TableRow>
+            <Button
+                android:id="@+id/gridButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onGButtonClicked"
+                android:text="Grid" />
 
-    <TableRow>
-        <TextView
-            android:id="@+id/lifeCycleTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:text="Activity 수명주기"
-            android:textColor="#A6A6A6"
-            android:textSize="16sp"
-            android:paddingLeft="10dp"/>
+            <Button
+                android:id="@+id/staggeredButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onSButtonClicked"
+                android:text="staggere" />
+        </TableRow>
 
-        <Button
-            android:id="@+id/lifeCycleBt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onLCButtonClicked"
-            android:text="Life Cycle" />
-    </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/lifeCycleTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="Activity 수명주기"
+                android:textColor="#A6A6A6"
+                android:textSize="13sp"
+                android:paddingLeft="10dp"/>
 
-</TableLayout>
+            <Button
+                android:id="@+id/lifeCycleBt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onLCButtonClicked"
+                android:text="생명주기" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Service 활용예제"
+                android:textColor="#A6A6A6"
+                android:textSize="13sp"
+                android:paddingLeft="10dp"
+                android:layout_weight="0"/>
+
+            <Button
+                android:id="@+id/serviceBt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onSVButtonClicked"
+                android:text="Service" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Broadcast Receiver 예제"
+                android:textColor="#A6A6A6"
+                android:textSize="13sp"
+                android:paddingLeft="10dp"
+                android:layout_weight="0"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="비행기모드" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Layout Inflater 예제"
+                android:textColor="#A6A6A6"
+                android:textSize="13sp"
+                android:paddingLeft="10dp"
+                android:layout_weight="0"/>
+
+            <Button
+                android:id="@+id/InflaterBt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onLIButtonClicked"
+                android:text="Inflater" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="파일입출력 예제"
+                android:textColor="#A6A6A6"
+                android:textSize="13sp"
+                android:paddingLeft="10dp"
+                android:layout_weight="0"/>
+
+            <Button
+                android:id="@+id/FileInOutBt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onfileButtonClicked"
+                android:text="파일입출력" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="애니메이션 예제"
+                android:textColor="#A6A6A6"
+                android:textSize="13sp"
+                android:paddingLeft="10dp"
+                android:layout_weight="0"/>
+
+            <Button
+                android:id="@+id/FrameAniBt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onFAButtonClicked"
+                android:text="FrameAni" />
+            <Button
+                android:id="@+id/TweenAniBt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onTAButtonClicked"
+                android:text="TweenAni" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Material Design 활용예제"
+                android:textColor="#A6A6A6"
+                android:textSize="13sp"
+                android:paddingLeft="10dp"
+                android:layout_weight="0"/>
+
+            <Button
+                android:id="@+id/MaterialBt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onMDButtonClicked"
+                android:text="Material" />
+        </TableRow>
+
+    </TableLayout>
+
+</ScrollView>

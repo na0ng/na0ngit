@@ -21,11 +21,9 @@ public class DustAdapter extends RecyclerView.Adapter<DustAdapter.MyViewHolder> 
         LayoutInflater : xml의 레이아웃을 메모리에 객체화하기 위해 사용하며,
                          화면의 일부분을 xml레이아웃 파일의 내용으로 적용하기 위해 사용
      */
-    private ArrayList<DustItem> list;
-    private LayoutInflater layoutInflater;
+    private ArrayList<DustItem> list = new ArrayList<DustItem>();
+    //private LayoutInflater layoutInflater;
     private Context context;
-
-    //private AdapterView.OnItemClickListener itemClickListener;
 
     public DustAdapter(Context context, ArrayList<DustItem> data) {
 
@@ -63,9 +61,9 @@ public class DustAdapter extends RecyclerView.Adapter<DustAdapter.MyViewHolder> 
 
                 Intent intent = new Intent(context, DustMapActivity.class);
 
-                //intent.putExtra("selectData", (Serializable) data);
                 intent.putExtra("selectItem1", data.getStationName());
-                intent.putExtra("selectItem2", data.getDataTime());
+                //intent.putExtra("selectItem2", data.getDataTime());
+                intent.putExtra("locationName", data.getLocationName());
 
                 context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 //v.getContext().startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));

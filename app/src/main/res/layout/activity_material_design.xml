@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="나옹이의 Material Design 예제"
+        android:textColor="#535c68"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/FABtn2"
+            android:src="@drawable/ic_baseline_favorite_24px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginRight="15sp"
+            android:visibility="invisible"
+            app:backgroundTint="#b8e994"
+            app:elevation="6dp"
+            app:pressedTranslationZ="12dp" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/FABtn1"
+            android:src="@drawable/ic_baseline_favorite_border_24px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="30dp"
+            android:layout_marginRight="15sp"
+            android:visibility="invisible"
+            app:backgroundTint="#b8e994"
+            app:elevation="6dp"
+            app:pressedTranslationZ="12dp" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/FABtn"
+            android:src="@drawable/ic_baseline_face_24px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginRight="15sp"
+            android:layout_marginBottom="30dp"
+            app:backgroundTint="#78e08f" />
+
+    </LinearLayout>
+
+</LinearLayout>

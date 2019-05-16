@@ -7,6 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Spinner;
 
 import com.example.intent.R;
 import com.example.intent.adapter.DustAdapter;
@@ -23,7 +27,6 @@ import java.util.ArrayList;
 
 public class DustViewActivity extends AppCompatActivity {
 
-
     //변수
     ArrayList<DustItem> dataList;
     DustAdapter dustAdapter;
@@ -34,12 +37,13 @@ public class DustViewActivity extends AppCompatActivity {
     LinearLayoutManager lim;
     DustItem dustItem;
 
+    Spinner spinner;
+    private String STATION = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dust_view);
-
-        //edit = findViewById(R.id.editBox);
 
         recyclerView = findViewById(R.id.recyclerView_dust);
         lim = new LinearLayoutManager(this);
@@ -49,31 +53,55 @@ public class DustViewActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(lim);
         recyclerView.addItemDecoration(decoration);
 
+        spinner = (Spinner) findViewById(R.id.spinner);
+
         //recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL.false));
 
-        //async
-        MyAsyncTask myAsyncTask = new MyAsyncTask(getApplicationContext());
-        myAsyncTask.execute();
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                Log.d("kny_selectSpinner", String.valueOf(parent.getItemAtPosition(position)));
+                STATION = String.valueOf(parent.getItemAtPosition(position));
+
+                MyAsyncTask myAsyncTask = new MyAsyncTask(getApplicationContext());
+                myAsyncTask.execute();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+                //스피너 초기값: 서울
+                STATION = "서울";
+                Log.d("kny_nothingSpinner", STATION);
+            }
+        });
 
     }
 
     public class MyAsyncTask extends AsyncTask<String, Void, String> {
+
         private Context context;
+        private final String SERVICE_KEY = "ipIQQAASbqJVNrR%2BryI5oa0a%2B1G0W3JNcaku6UP3ODNFlHHr95tN%2F7%2BlQ8Jr44%2BdtffXOXPJDvkBC7cWGZkvUg%3D%3D";
+
 
         public MyAsyncTask(Context context){
             this.context = context;
         }
 
-        //data api key
-        private final String WEATHER_API_KEY = "ipIQQAASbqJVNrR%2BryI5oa0a%2B1G0W3JNcaku6UP3ODNFlHHr95tN%2F7%2BlQ8Jr44%2BdtffXOXPJDvkBC7cWGZkvUg%3D%3D";
-        //private final String WEATHER_API_KEY = context.getString(R.string.weater_api_key);
-        private String restUrl = "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?sidoName=서울"+
-                "&pageNo=1&numOfRows=10&ServiceKey="+
-                WEATHER_API_KEY+
-                "&ver=1.3";
-
         @Override
         protected String doInBackground(String... strings) {
+
+            //data api key
+            String restUrl = "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?sidoName="+
+                    STATION +
+                    "&pageNo=1&numOfRows=50&ServiceKey="+
+                    SERVICE_KEY+
+                    "&ver=1.3";
+
+            Log.d("kny_station", STATION);
+            Log.d("kny_url", restUrl);
 
             try{
                 boolean b_areaName = false;
@@ -91,6 +119,7 @@ public class DustViewActivity extends AppCompatActivity {
                 xmlPullParser.setInput(url.openStream(),"UTF-8");
 
                 int eventType = xmlPullParser.getEventType();
+                int num;
 
                 while(eventType != XmlPullParser.END_DOCUMENT) {
                     switch (eventType) {
@@ -110,6 +139,10 @@ public class DustViewActivity extends AppCompatActivity {
                         case XmlPullParser.START_TAG:
                             if(xmlPullParser.getName().equals("item")){
                                 dustItem = new DustItem();
+
+                                //지역저장
+                                dustItem.setLocationName(STATION);
+                                Log.d("kny_locationName", dustItem.getLocationName());
                             }
                             if(xmlPullParser.getName().equals("stationName")){
                                 b_areaName = true;
@@ -149,13 +182,19 @@ public class DustViewActivity extends AppCompatActivity {
                             }
                             else if(b_pm10Greade) {
 
-                                if( Integer.valueOf(xmlPullParser.getText()) > 0 && Integer.valueOf(xmlPullParser.getText()) <=30 ) {
+                                if(dustItem.getPm10Value().equals("-")) {
+                                    num = 0;
+                                } else {
+                                num = Integer.parseInt(dustItem.getPm10Value());
+                                }
+
+                                if( num > 0 && num <= 30 ) {
                                     dustItem.setPm10Grade("좋음");
-                                } else if ( Integer.valueOf(xmlPullParser.getText()) >= 31 && Integer.valueOf(xmlPullParser.getText()) <= 80 ) {
+                                } else if ( num >= 31 && num <= 80 ) {
                                     dustItem.setPm10Grade("보통");
-                                } else if ( Integer.valueOf(xmlPullParser.getText()) >= 81 && Integer.valueOf(xmlPullParser.getText()) <= 150 ) {
+                                } else if ( num >= 81 && num <= 150 ) {
                                     dustItem.setPm10Grade("나쁨");
-                                } else if ( Integer.valueOf(xmlPullParser.getText()) >= 151 ) {
+                                } else if ( num >= 151 ) {
                                     dustItem.setPm10Grade("매우나쁨");
                                 } else { dustItem.setPm10Grade("잘못된 값"); }
 
@@ -163,13 +202,19 @@ public class DustViewActivity extends AppCompatActivity {
                             }
                             else if(b_pm25Greade) {
 
-                                if( Integer.valueOf(xmlPullParser.getText()) > 0 && Integer.valueOf(xmlPullParser.getText()) <=30 ) {
+                                if(dustItem.getPm25Value().equals("-")) {
+                                    num = 0;
+                                } else {
+                                    num = Integer.parseInt(dustItem.getPm25Value());
+                                }
+
+                                if( num > 0 && num <=30 ) {
                                     dustItem.setPm25Grade("좋음");
-                                } else if ( Integer.valueOf(xmlPullParser.getText()) >= 31 && Integer.valueOf(xmlPullParser.getText()) <= 80 ) {
+                                } else if ( num >= 31 && num <= 80 ) {
                                     dustItem.setPm25Grade("보통");
-                                } else if ( Integer.valueOf(xmlPullParser.getText()) >= 81 && Integer.valueOf(xmlPullParser.getText()) <= 150 ) {
+                                } else if ( num >= 81 && num <= 150 ) {
                                     dustItem.setPm25Grade("나쁨");
-                                } else if ( Integer.valueOf(xmlPullParser.getText()) >= 151 ) {
+                                } else if ( num >= 151 ) {
                                     dustItem.setPm25Grade("매우나쁨");
                                 } else { dustItem.setPm25Grade("잘못된 값"); }
 
@@ -195,8 +240,6 @@ public class DustViewActivity extends AppCompatActivity {
 
             dustAdapter = new DustAdapter(context, dataList);
             recyclerView.setAdapter(dustAdapter);
-
-
         }
     }
 }

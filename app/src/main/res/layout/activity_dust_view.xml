@@ -18,7 +18,11 @@
         android:layout_marginTop ="10dp"
         tools:text="시도별 실시간 측정 정보 조회" />
 
-
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/시도이름" />
 
 
     <android.support.v7.widget.RecyclerView

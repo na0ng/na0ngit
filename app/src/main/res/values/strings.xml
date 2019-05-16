@@ -1,8 +1,11 @@
 <resources>
-    <string name="app_name">MyIntent</string>
+    <string name="ong_name">나옹app</string>
 
     <!-- open api활용 : 미세먼지 -->
     <string name="pm_unit">㎍/㎥</string>
     <string name="weater_api_key">ipIQQAASbqJVNrR%2BryI5oa0a%2B1G0W3JNcaku6UP3ODNFlHHr95tN%2F7%2BlQ8Jr44%2BdtffXOXPJDvkBC7cWGZkvUg%3D%3D</string>
+
+    <!-- CONTENT PROVIDER -->
+    <string name="authorities">com.example.intent.MyContentProvider</string>
 
 </resources>

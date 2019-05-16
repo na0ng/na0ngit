@@ -11,12 +11,17 @@ public class DustItem {
     String pm10Grade;
     String pm25Grade;
 
-/*    Double dmX;
-    Double dmY;*/
+/*    String dmX;
+    String dmY;*/
 
-    String dmX;
-    String dmY;
+    Double dmX;
+    Double dmY;
 
+    String locationName;
+
+    public DustItem() {
+        super();
+    }
 
     public String getStationName() {
         return stationName;
@@ -66,7 +71,7 @@ public class DustItem {
         this.pm25Grade = pm25Grade;
     }
 
-/*    public Double getDmX() {
+    public Double getDmX() {
         return dmX;
     }
 
@@ -80,9 +85,9 @@ public class DustItem {
 
     public void setDmY(Double dmY) {
         this.dmY = dmY;
-    }*/
+    }
 
-    public String getDmX() {
+/*    public String getDmX() {
         return dmX;
     }
 
@@ -96,5 +101,17 @@ public class DustItem {
 
     public void setDmY(String dmY) {
         this.dmY = dmY;
+    }
+
+    public DustItem(String locationName) {
+        this.locationName = locationName;
+    }*/
+
+    public String getLocationName() {
+        return locationName;
+    }
+
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
     }
 }
